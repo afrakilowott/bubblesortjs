@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bubble Sort</title>
+</head>
+<body>
+    <label for="input">Enter numbers separated by spaces:</label>
+    <input type="text" id="input">
+    <button onclick="sortArray()">Sort</button>
+
+    <div id="output"></div>
+
+    <script>
+        function bubbleSort(arr) {
+            var n = arr.length;
+            var swapped;
+            do {
+                swapped = false;
+                for (var i = 0; i < n - 1; i++) {
+                    if (arr[i] > arr[i + 1]) {
+                        // Swap arr[i] and arr[i + 1]
+                        var temp = arr[i];
+                        arr[i] = arr[i + 1];
+                        arr[i + 1] = temp;
+                        swapped = true;
+                    }
+                }
+            } while (swapped);
+            return arr;
+        }
+
+        function sortArray() {
+            var inputElement = document.getElementById("input");
+            var outputElement = document.getElementById("output");
+            var inputText = inputElement.value;
+            var inputArray = inputText.split(" ").map(Number);
+
+            var sortedArray = bubbleSort(inputArray);
+            outputElement.innerHTML = "Sorted Array: " + sortedArray.join(", ");
+        }
+    </script>
+</body>
+</html>
